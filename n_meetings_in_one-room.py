@@ -1,12 +1,14 @@
 class Solution:
     def maxMeetings(self, start, end):
         #your code goes here
-        count=0
-        n=len(start)
-        lastend=-1
+        array=[]
+        for i in range(len(start)):
+            array.append((end[i],start[i]))
 
-        for i in range(n):
-            if start[i]>lastend:
+        count=0
+        lastend=-1
+        for endtime,starttime in array:
+            if starttime>lastend:
                 count+=1
-                lastend=end[i]
+                lastend=endtime
         return count
